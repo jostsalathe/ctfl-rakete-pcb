@@ -33,29 +33,30 @@ void setup() {
 }
 
 void animateLightBlip(int offsetMs) {
+  const uint8_t pwmDim = 16, pwmBright = 255;
   if (offsetMs < 100) {
     digitalWrite(PIN_LIGHT_L, HIGH);
-    digitalWrite(PIN_LIGHT_C, LOW);
+    analogWrite(PIN_LIGHT_C, pwmDim);
     digitalWrite(PIN_LIGHT_R, LOW);
   } else if (offsetMs < 200) {
     digitalWrite(PIN_LIGHT_L, HIGH);
-    digitalWrite(PIN_LIGHT_C, HIGH);
+    analogWrite(PIN_LIGHT_C, pwmBright);
     digitalWrite(PIN_LIGHT_R, LOW);
   } else if (offsetMs < 300) {
     digitalWrite(PIN_LIGHT_L, LOW);
-    digitalWrite(PIN_LIGHT_C, HIGH);
+    analogWrite(PIN_LIGHT_C, pwmBright);
     digitalWrite(PIN_LIGHT_R, LOW);
   } else if (offsetMs < 400) {
     digitalWrite(PIN_LIGHT_L, LOW);
-    digitalWrite(PIN_LIGHT_C, HIGH);
+    analogWrite(PIN_LIGHT_C, pwmBright);
     digitalWrite(PIN_LIGHT_R, HIGH);
   } else if (offsetMs < 500) {
     digitalWrite(PIN_LIGHT_L, LOW);
-    digitalWrite(PIN_LIGHT_C, LOW);
+    analogWrite(PIN_LIGHT_C, pwmDim);
     digitalWrite(PIN_LIGHT_R, HIGH);
   } else {
     digitalWrite(PIN_LIGHT_L, LOW);
-    digitalWrite(PIN_LIGHT_C, LOW);
+    analogWrite(PIN_LIGHT_C, pwmDim);
     digitalWrite(PIN_LIGHT_R, LOW);
   }
 }
